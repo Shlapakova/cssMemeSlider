@@ -49,6 +49,8 @@ body {
   width: auto;
   object-fit: cover;
   border-radius: 15%;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  animation: imageAnimation 1s ease-in-out;
 }
 
 .text-controls-wrapper {
@@ -65,33 +67,34 @@ body {
   color: white;
   margin: 0;
   flex: 1;
+  animation: textAnimation 2s ease-in-out;
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 0.3em;
 }
 
 .control {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  border: 2px solid #5b91cf;
+  border: 2px solid rgb(0,0,0,0);
   background-color: #5b91cf;
   opacity: 0.80;
-  transition: opacity ease 250ms, background-color ease 250ms;
-  margin: 0.5rem 0;
+  margin: 0.07rem 0;
+  cursor: pointer;
+  padding: 0.3rem;
+  background-clip: content-box;
+  z-index: 1;
 }
-
 .control:hover {
   background-color: #ffffff;
-  border-color: #ffffff;
 }
 
 .control:active, .control.active {
   background-color: #ffffff;
-  border-color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -102,5 +105,34 @@ body {
 
   .controls {
     margin-top: 1rem;
+  }
+}
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
